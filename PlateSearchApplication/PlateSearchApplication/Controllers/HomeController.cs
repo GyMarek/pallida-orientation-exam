@@ -4,16 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PlateSearchApplication.Repositories;
+using PlateSearchApplication.Models;
 
 namespace PlateSearchApplication.Controllers
 {
     public class HomeController : Controller
     {
         CarPlateRepository CarPlateRepository;
+        CarPlate CarPlate;
 
-        public HomeController(CarPlateRepository carPlateRepository)
+        public HomeController(CarPlateRepository carPlateRepository, CarPlate carPlate)
         {
             CarPlateRepository = carPlateRepository;
+            CarPlate = carPlate;
         }
 
         [Route("/search")]
@@ -23,6 +26,20 @@ namespace PlateSearchApplication.Controllers
             return View(CarPlateRepository.SearchPlateList(plate));
         }
 
+        [Route("/{what}")]
+        [HttpGet]
+        public IActionResult Index(string what, int temp)
+        {
+            if (what == "police")
+            {
+                return View(CarPlateRepository.ListPolice());
+            }
+            if (what == "diplomats")
+            {
+                return View(CarPlateRepository.ListDiplomats());
+            }
+            return NotFound();
+        }
 
 
         //[Route("/search/{plate}")]
@@ -30,8 +47,6 @@ namespace PlateSearchApplication.Controllers
         //public IActionResult ListByPlate(string plate)
         //{
         //    return Json(CarPlateRepository.SearchPlateList(plate));
-        //}
-
-
+        //}     
     }
 }

@@ -24,5 +24,23 @@ namespace PlateSearchApplication.Repositories
 
             return searchedPlate.ToList();
         }
+
+        public List<CarPlate> ListPolice()
+        {
+            var searchedPolice = from searchPlate in CarPlateContext.Licence_plates
+                                where searchPlate.Plate.Contains("RB")
+                                select searchPlate;
+
+            return searchedPolice.ToList();
+        }
+
+        public List<CarPlate> ListDiplomats()
+        {
+            var searchedDiplomats = from searchPlate in CarPlateContext.Licence_plates
+                                 where searchPlate.Plate.Contains("DT")
+                                 select searchPlate;
+
+            return searchedDiplomats.ToList();
+        }
     }
 }
