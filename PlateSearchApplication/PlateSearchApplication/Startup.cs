@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using PlateSearchApplication.Entities;
 using Microsoft.EntityFrameworkCore;
+using PlateSearchApplication.Repositories;
 
 namespace PlateSearchApplication
 {
@@ -21,6 +22,7 @@ namespace PlateSearchApplication
             services.AddMvc();
             services.AddDbContext<CarPlateContext>(options => options.UseSqlServer(connectionstring));
             services.AddSingleton<Models.CarPlate>();
+            services.AddScoped<CarPlateRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
