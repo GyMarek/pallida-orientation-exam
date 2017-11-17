@@ -37,12 +37,12 @@ namespace PlateSearchApplication.Controllers
             return NotFound();
         }
 
-        [Route("/{brand}")]
-        [Route("/search/{brand}")]
-        [HttpGet]
-        public IActionResult Index(string brand, [FromBody] CarPlate plate)
-        {
-            return View(CarPlateRepository.SearchPlateList(brand));
-        }        
+        //[Route("/{brand}")]
+        //[Route("/search/{brand}")]
+        //[HttpGet]
+        //public IActionResult Index(string brand, [FromBody] CarPlate plate)
+        //{
+        //    return View(CarPlateRepository.SearchPlateList(brand));
+        //}        
     }
 }
