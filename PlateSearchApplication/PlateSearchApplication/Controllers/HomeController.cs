@@ -16,11 +16,22 @@ namespace PlateSearchApplication.Controllers
             CarPlateRepository = carPlateRepository;
         }
 
-        [Route("/search/{stringplate}")]
+        [Route("/search")]
         [HttpGet]
-        public IActionResult ListByPlate(string plate)
+        public IActionResult Index(string plate)
         {
-            return Json(CarPlateRepository.SearchPlateList(plate));
+            return View(CarPlateRepository.SearchPlateList(plate));
         }
+
+
+
+        //[Route("/search/{plate}")]
+        //[HttpGet]
+        //public IActionResult ListByPlate(string plate)
+        //{
+        //    return Json(CarPlateRepository.SearchPlateList(plate));
+        //}
+
+
     }
 }
