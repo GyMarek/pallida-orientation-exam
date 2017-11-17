@@ -42,5 +42,14 @@ namespace PlateSearchApplication.Repositories
 
             return searchedDiplomats.ToList();
         }
+
+        public List<CarPlate> SearchBrandList(string brand)
+        {
+            var searchedBrand = from searchBrand in CarPlateContext.Licence_plates
+                                where searchBrand.Car_brand == brand
+                                select searchBrand;
+
+            return searchedBrand.ToList();
+        }
     }
 }
