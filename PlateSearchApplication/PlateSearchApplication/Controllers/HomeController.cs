@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PlateSearchApplication.Repositories;
 using PlateSearchApplication.Models;
 
@@ -42,10 +38,11 @@ namespace PlateSearchApplication.Controllers
         }
 
         [Route("/{brand}")]
+        [Route("/search/{brand}")]
         [HttpGet]
         public IActionResult Index(string brand, [FromBody] CarPlate plate)
         {
             return View(CarPlateRepository.SearchPlateList(brand));
-        }
+        }        
     }
 }

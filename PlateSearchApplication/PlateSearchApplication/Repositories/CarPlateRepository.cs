@@ -1,9 +1,7 @@
 ﻿using PlateSearchApplication.Entities;
 using PlateSearchApplication.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace PlateSearchApplication.Repositories
 {
@@ -21,15 +19,14 @@ namespace PlateSearchApplication.Repositories
             var searchedPlate = from searchPlate in CarPlateContext.Licence_plates
                                 where searchPlate.Plate.Contains(plate)
                                 select searchPlate;
-
             return searchedPlate.ToList();
         }
 
         public List<CarPlate> ListPolice()
         {
             var searchedPolice = from searchPlate in CarPlateContext.Licence_plates
-                                where searchPlate.Plate.Contains("RB")
-                                select searchPlate;
+                                 where searchPlate.Plate.Contains("RB")
+                                 select searchPlate;
 
             return searchedPolice.ToList();
         }
@@ -37,8 +34,8 @@ namespace PlateSearchApplication.Repositories
         public List<CarPlate> ListDiplomats()
         {
             var searchedDiplomats = from searchPlate in CarPlateContext.Licence_plates
-                                 where searchPlate.Plate.Contains("DT")
-                                 select searchPlate;
+                                    where searchPlate.Plate.Contains("DT")
+                                    select searchPlate;
 
             return searchedDiplomats.ToList();
         }
