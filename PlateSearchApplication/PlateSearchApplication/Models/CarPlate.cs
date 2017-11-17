@@ -10,6 +10,7 @@ namespace PlateSearchApplication.Models
     {
         [Key]
         public int PlateId { get; set; }
+        [MaxLength(7, ErrorMessage = "The input plate is too long")]
         public string Plate { get; set; }
         public string Car_brand { get; set; }
         public string Car_model { get; set; }

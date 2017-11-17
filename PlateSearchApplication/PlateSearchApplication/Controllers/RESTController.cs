@@ -3,17 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using PlateSearchApplication.Repositories;
+using PlateSearchApplication.Models;
 
 namespace PlateSearchApplication.Controllers
 {
     public class RESTController : Controller
     {
-        // GET: /<controller>/
-        public IActionResult Index()
+        CarPlateRepository CarPlateRepository;
+        CarPlate CarPlate;
+
+        public RESTController(CarPlateRepository carPlateRepository, CarPlate carPlate)
         {
-            return View();
+            CarPlateRepository = carPlateRepository;
+            CarPlate = carPlate;
+        }
+
+        [Route("api/search/{brand}")]
+        [HttpGet]
+        public IActionResult ListByPlate(string brand)
+        {
+            return Json(CarPlateRepository.SearchBrandList(brand));
         }
     }
 }
