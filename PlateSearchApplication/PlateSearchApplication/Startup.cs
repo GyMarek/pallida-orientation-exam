@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using PlateSearchApplication.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace PlateSearchApplication
 {
@@ -14,7 +16,11 @@ namespace PlateSearchApplication
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionstring = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=plateSearch;Integrated Security=True;Connect Timeout=30;";
+
             services.AddMvc();
+            services.AddDbContext<CarPlateContext>(options => options.UseSqlServer(connectionstring));
+            services.AddSingleton<Models.CarPlate>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

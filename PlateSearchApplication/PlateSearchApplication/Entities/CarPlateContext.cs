@@ -14,6 +14,6 @@ namespace PlateSearchApplication.Entities
 
         }
 
-        //public DbSet<CarPlate> CarPlates { get; set; }
+        public DbSet<CarPlate> Licence_plates { get; set; }
     }
 }
